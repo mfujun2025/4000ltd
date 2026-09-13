@@ -6,7 +6,7 @@
   <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} | {{ .Site.Params.siteName }}{{ end }}</title>
   {{ $desc := or .Description .Params.description .Site.Params.description }}
   <meta name="description" content="{{ $desc }}">
-  {{ with or .Params.keywords .Site.Params.keywords }}<meta name="keywords" content="{{ . }}">{{ end }}
+  {{ $kw := or .Params.keywords .Site.Params.keywords }}{{ with $kw }}<meta name="keywords" content="{{ if reflect.IsSlice . }}{{ delimit . "," }}{{ else }}{{ . }}{{ end }}">{{ end }}
   <meta name="author" content="{{ .Site.Params.siteName }}">
   <link rel="canonical" href="{{ .Permalink }}">
   {{ $css := resources.Get "css/style.css" | minify | fingerprint "sha256" }}
