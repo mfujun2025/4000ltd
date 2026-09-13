@@ -4,10 +4,26 @@
 {{ $cityFull := .Params.cityName | default "全国" }}
 {{ $level := .Params.cityLevel | default "地级市" }}
 {{ $prov := .Params.province | default "" }}
+{{ $pslug := .Params.provinceSlug | default "" }}
 {{ $areaCode := .Params.areaCode | default "" }}
 {{ $nums := hugo.Data.numbers }}
 {{ $provinces := $p.provinces }}
 {{ $total := 0 }}{{ range $provinces }}{{ $total = add $total (len .cities) }}{{ end }}
+
+{{/* 同省城市 */}}
+{{ $siblings := slice }}
+{{ range $provinces }}{{ if eq .slug $pslug }}{{ $siblings = .cities }}{{ end }}{{ end }}
+{{ $hasSiblings := gt (len $siblings) 1 }}
+
+{{/* 热门城市：直辖市 + 省会 + 副省级（用于直辖市等无同省城市时兜底） */}}
+{{ if not $hasSiblings }}
+  {{ $siblings = slice }}
+  {{ range $provinces }}{{ range .cities }}
+    {{ if or (eq .level "省会") (eq .level "副省级") (eq .level "直辖市") }}
+      {{ $siblings = $siblings | append . }}
+    {{ end }}
+  {{ end }}{{ end }}
+{{ end }}
 
 <section class="hero" style="padding:56px 0 48px">
   <div class="container hero-inner">
@@ -80,75 +96,19 @@
 <section>
   <div class="container">
     <div class="sec-head">
-      <h2>全国服务城市（{{ $total }} 个）</h2>
-      <p>400 号码全国通用，选择你的城市查看本地办理说明</p>
+      <h2>{{ if $hasSiblings }}{{ $prov }}其他城市{{ else }}热门城市{{ end }}</h2>
+      <p>同属一个省，办理流程与资费标准一致</p>
     </div>
-    <div class="prov-tabs">
-      <a href="#s-all" class="prov-tab is-on" data-prov="all">全部</a>
-      {{ range $provinces }}
-      <a href="#s-{{ .slug }}" class="prov-tab" data-prov="{{ .slug }}">{{ .name }}<span class="cnt">{{ len .cities }}</span></a>
-      {{ end }}
+    <div class="city-chips city-chips-lg">
+      {{ range $siblings }}{{ if ne .slug $.Params.citySlug }}
+      <a href="{{ printf "city/%s/" .slug | relURL }}">{{ .name }}400电话</a>
+      {{ end }}{{ end }}
     </div>
-    {{ range $provinces }}
-    <div class="prov-block" id="s-{{ .slug }}" data-prov="{{ .slug }}">
-      <h3 class="prov-title">{{ .name }}<span>{{ len .cities }} 个城市</span></h3>
-      <div class="city-list">
-        {{ range .cities }}
-        <a href="{{ printf "city/%s/" .slug | relURL }}"{{ if eq .slug $.Params.citySlug }} class="is-cur"{{ end }}>{{ .name }}400电话</a>
-        {{ end }}
-      </div>
-    </div>
-    {{ end }}
-  </div>
-</section>
-
-    {{ range $i, $pv := $provinces }}
-    <div class="prov-block" id="s-{{ $pv.slug }}" data-prov="{{ $pv.slug }}"{{ if ge $i 6 }} hidden{{ end }}>
-      <h3 class="prov-title">{{ $pv.name }}<span>{{ len $pv.cities }} 个城市</span></h3>
-      <div class="city-list">
-        {{ range $pv.cities }}
-        <a href="{{ printf "city/%s/" .slug | relURL }}"{{ if eq .slug $.Params.citySlug }} class="is-cur"{{ end }}>{{ .name }}400电话</a>
-        {{ end }}
-      </div>
-    </div>
-    {{ end }}
-    <div style="text-align:center;margin-top:10px">
-      <button class="btn btn-line" id="provMore" type="button">展开全部 34 个省级行政区 ↓</button>
+    <div style="text-align:center;margin-top:26px">
+      <a href="{{ "city/" | relURL }}" class="btn btn-line btn-lg">查看全国 {{ $total }} 个城市 →</a>
     </div>
   </div>
 </section>
-
-<script>
-(function () {
-  var tabs = document.querySelectorAll('.prov-tab');
-  var blocks = document.querySelectorAll('.prov-block');
-  var more = document.getElementById('provMore');
-
-  function expandAll() {
-    if (more) more.style.display = 'none';
-    blocks.forEach(function (b) { b.hidden = false; });
-  }
-  function setProv(slug) {
-    expandAll();
-    tabs.forEach(function (t) { t.classList.toggle('is-on', t.dataset.prov === slug); });
-    if (slug !== 'all') {
-      blocks.forEach(function (b) { b.hidden = (b.dataset.prov !== slug); });
-    }
-    var el = slug === 'all' ? null : document.getElementById('s-' + slug);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-  tabs.forEach(function (t) {
-    t.addEventListener('click', function (e) { e.preventDefault(); setProv(t.dataset.prov); });
-  });
-  if (more) more.addEventListener('click', expandAll);
-  // 当前城市所在省默认展开
-  var cur = document.querySelector('.city-list a.is-cur');
-  if (cur) {
-    var blk = cur.closest('.prov-block');
-    if (blk) blk.hidden = false;
-  }
-})();
-</script>
 
 <section class="cta-band">
   <div class="container">

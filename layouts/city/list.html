@@ -3,35 +3,55 @@
 {{ $provinces := $p.provinces }}
 {{ $total := 0 }}{{ range $provinces }}{{ $total = add $total (len .cities) }}{{ end }}
 
-<section style="padding:44px 0 20px">
+{{/* 直辖市合并成一张卡片 */}}
+{{ $muniSlugs := slice "beijing" "tianjin" "shanghai" "chongqing" }}
+{{ $muni := slice }}
+{{ range $provinces }}{{ if in $muniSlugs .slug }}{{ range .cities }}{{ $muni = $muni | append . }}{{ end }}{{ end }}{{ end }}
+{{ $rest := where $provinces "slug" "not in" $muniSlugs }}
+
+<section class="city-hero">
   <div class="container">
     <div class="breadcrumb"><a href="{{ "" | relURL }}">首页</a> / 城市分站</div>
-    <h1 style="font-size:30px;margin-bottom:12px">全国 400 电话办理服务城市</h1>
-    <p style="color:#86909C">覆盖全国 {{ len $provinces }} 个省级行政区、{{ $total }} 个地级行政区，本地化服务团队就近对接，400 号码全国通用、不分区域</p>
+    <h1>全国 400 电话办理服务城市</h1>
+    <p>覆盖全国 {{ len $provinces }} 个省级行政区、{{ $total }} 个地级行政区。400 号码全国通用、不分区域，选你的城市查看本地办理说明。</p>
+    <div class="city-search">
+      <input type="text" id="citySearch" placeholder="输入城市名快速查找，如：苏州、临沂、延边" autocomplete="off">
+      <span class="city-search-tip" id="searchTip">{{ $total }} 个城市</span>
+    </div>
   </div>
 </section>
 
-<section style="padding-top:10px">
+<section style="padding-top:26px">
   <div class="container">
-    <div class="prov-tabs">
-      <a href="#p-all" class="prov-tab is-on" data-prov="all">全部（{{ $total }}）</a>
-      {{ range $provinces }}
-      <a href="#p-{{ .slug }}" class="prov-tab" data-prov="{{ .slug }}">{{ .name }}<span class="cnt">{{ len .cities }}</span></a>
+    <div class="prov-nav" id="provNav">
+      <a href="#cityGrid" class="prov-nav-item is-on" data-jump="all">全部</a>
+      <a href="#pc-muni" class="prov-nav-item" data-jump="pc-muni">直辖市</a>
+      {{ range $rest }}
+      <a href="#pc-{{ .slug }}" class="prov-nav-item" data-jump="pc-{{ .slug }}">{{ .name }}</a>
       {{ end }}
     </div>
 
-    {{ range $i, $pv := $provinces }}
-    <div class="prov-block" id="p-{{ $pv.slug }}" data-prov="{{ $pv.slug }}"{{ if ge $i 6 }} hidden{{ end }}>
-      <h2 class="prov-title">{{ $pv.name }}<span>{{ len $pv.cities }} 个城市</span></h2>
-      <div class="city-list">
-        {{ range $pv.cities }}
-        <a href="{{ printf "city/%s/" .slug | relURL }}">{{ .name }}400电话</a>
-        {{ end }}
+    <div class="prov-grid" id="cityGrid">
+      <div class="prov-card" id="pc-muni">
+        <h2><span class="pc-name">直辖市</span><span class="pc-cnt">{{ len $muni }}</span></h2>
+        <div class="city-chips">
+          {{ range $muni }}<a href="{{ printf "city/%s/" .slug | relURL }}">{{ .name }}400电话</a>{{ end }}
+        </div>
       </div>
+
+      {{ range $rest }}
+      <div class="prov-card" id="pc-{{ .slug }}">
+        <h2><span class="pc-name">{{ .name }}</span><span class="pc-cnt">{{ len .cities }}</span></h2>
+        <div class="city-chips">
+          {{ range .cities }}<a href="{{ printf "city/%s/" .slug | relURL }}">{{ .name }}400电话</a>{{ end }}
+        </div>
+      </div>
+      {{ end }}
     </div>
-    {{ end }}
-    <div style="text-align:center;margin-top:10px">
-      <button class="btn btn-line" id="provMore" type="button">展开全部 34 个省级行政区 ↓</button>
+
+    <div class="city-empty" id="cityEmpty" hidden>
+      没有找到匹配的城市，换个关键词试试，或直接
+      <a href="tel:{{ $p.phoneRaw }}">电话咨询 {{ $p.phone }}</a>
     </div>
   </div>
 </section>
@@ -75,32 +95,98 @@
 
 <script>
 (function () {
-  var tabs = document.querySelectorAll('.prov-tab');
-  var blocks = document.querySelectorAll('.prov-block');
-  var more = document.getElementById('provMore');
-  var expanded = false;
+  var input = document.getElementById('citySearch');
+  var tip = document.getElementById('searchTip');
+  var empty = document.getElementById('cityEmpty');
+  var cards = Array.prototype.slice.call(document.querySelectorAll('.prov-card'));
+  var navItems = Array.prototype.slice.call(document.querySelectorAll('.prov-nav-item'));
+  var total = {{ $total }};
 
-  function showAll() {
-    expanded = true;
-    if (more) more.style.display = 'none';
-    blocks.forEach(function (b) { b.hidden = false; });
-  }
-  function setProv(slug) {
-    // 选中某个省时，先全部展开再隐藏其它
-    expanded = true;
-    if (more) more.style.display = 'none';
-    blocks.forEach(function (b) { b.hidden = false; });
-    tabs.forEach(function (t) { t.classList.toggle('is-on', t.dataset.prov === slug); });
-    if (slug !== 'all') {
-      blocks.forEach(function (b) { b.hidden = (b.dataset.prov !== slug); });
-    }
-    var el = slug === 'all' ? null : document.getElementById('p-' + slug);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-  tabs.forEach(function (t) {
-    t.addEventListener('click', function (e) { e.preventDefault(); setProv(t.dataset.prov); });
+  cards.forEach(function (c) {
+    c._chips = Array.prototype.slice.call(c.querySelectorAll('.city-chips a'));
+    var nm = c.querySelector('.pc-name');
+    c._prov = nm ? nm.textContent : '';
+    c._cnt = c.querySelector('.pc-cnt');
+    c._cntOrig = c._cnt ? c._cnt.textContent : '';
   });
-  if (more) more.addEventListener('click', showAll);
+
+  function reset() {
+    cards.forEach(function (c) {
+      c.hidden = false;
+      c._chips.forEach(function (a) { a.hidden = false; });
+      if (c._cnt) c._cnt.textContent = c._cntOrig;
+    });
+    if (empty) empty.hidden = true;
+    if (tip) tip.textContent = total + ' 个城市';
+  }
+
+  function doSearch(q) {
+    q = q.trim();
+    if (!q) { reset(); return; }
+    var hitCards = 0, hitCities = 0;
+    cards.forEach(function (c) {
+      var n = 0;
+      c._chips.forEach(function (a) {
+        var ok = a.textContent.indexOf(q) !== -1;
+        a.hidden = !ok;
+        if (ok) n++;
+      });
+      var provHit = c._prov.indexOf(q) !== -1;
+      if (provHit && n < c._chips.length) {
+        c._chips.forEach(function (a) { a.hidden = false; });
+        n = c._chips.length;
+      }
+      c.hidden = n === 0;
+      if (c._cnt) c._cnt.textContent = n;
+      if (n > 0) { hitCards++; hitCities += n; }
+    });
+    if (empty) empty.hidden = hitCards > 0;
+    if (tip) tip.textContent = hitCards > 0 ? ('找到 ' + hitCities + ' 个城市') : '无匹配结果';
+  }
+
+  if (input) {
+    input.addEventListener('input', function () { doSearch(input.value); });
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { input.value = ''; reset(); }
+    });
+  }
+
+  function jumpTo(id) {
+    if (id === 'all') {
+      var g = document.getElementById('cityGrid');
+      window.scrollTo({ top: g.getBoundingClientRect().top + window.pageYOffset - 90, behavior: 'smooth' });
+      return;
+    }
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.hidden = false;
+    var y = el.getBoundingClientRect().top + window.pageYOffset - 96;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+    el.classList.add('flash');
+    setTimeout(function () { el.classList.remove('flash'); }, 1400);
+  }
+
+  navItems.forEach(function (it) {
+    it.addEventListener('click', function (e) {
+      e.preventDefault();
+      if (input && input.value) { input.value = ''; reset(); }
+      navItems.forEach(function (x) { x.classList.remove('is-on'); });
+      it.classList.add('is-on');
+      jumpTo(it.dataset.jump);
+    });
+  });
+
+  if (location.hash) {
+    var t = document.querySelector(location.hash);
+    if (t) {
+      setTimeout(function () {
+        var y = t.getBoundingClientRect().top + window.pageYOffset - 96;
+        window.scrollTo({ top: y, behavior: 'smooth' });
+        t.classList.add('flash');
+        setTimeout(function () { t.classList.remove('flash'); }, 1400);
+      }, 200);
+    }
+  }
 })();
 </script>
 {{ end }}

@@ -166,5 +166,6 @@
 <script>
 window.__NUMBERS__ = {{ hugo.Data.numbers | jsonify | safeJS }};
 </script>
-<script src="{{ "js/lianghao.js" | relURL }}" defer></script>
+{{ $lj := resources.Get "js/lianghao.js" | fingerprint "sha256" }}
+<script src="{{ $lj.RelPermalink }}" integrity="{{ $lj.Data.Integrity }}" defer></script>
 {{ end }}

@@ -56,6 +56,7 @@
   </div>
 </div>
 
-<script src="{{ "js/main.js" | relURL }}" defer></script>
+{{ $js := resources.Get "js/main.js" | fingerprint "sha256" }}
+<script src="{{ $js.RelPermalink }}" integrity="{{ $js.Data.Integrity }}" defer></script>
 </body>
 </html>

@@ -175,51 +175,36 @@
 <!-- 城市分站 -->
 {{ $provinces := $p.provinces }}
 {{ $totalCity := 0 }}{{ range $provinces }}{{ $totalCity = add $totalCity (len .cities) }}{{ end }}
+{{ $hot := slice }}
+{{ range $provinces }}{{ range .cities }}
+  {{ if or (eq .level "省会") (eq .level "副省级") (eq .level "直辖市") }}
+    {{ $hot = $hot | append . }}
+  {{ end }}
+{{ end }}{{ end }}
 <section>
   <div class="container">
     <div class="sec-head">
       <h2>全国服务城市</h2>
-      <p>覆盖 {{ len $provinces }} 个省级行政区、{{ $totalCity }} 个地级行政区，本地化办理服务，就近对接更快响应</p>
+      <p>覆盖 {{ len $provinces }} 个省级行政区、{{ $totalCity }} 个地级行政区，本地化办理，就近对接更快响应</p>
     </div>
-    <div class="prov-tabs" style="justify-content:center">
-      <a href="#h-all" class="prov-tab is-on" data-prov="all">全部（{{ $totalCity }}）</a>
+
+    <h3 class="home-city-sub">热门城市</h3>
+    <div class="city-chips city-chips-lg" style="justify-content:center">
+      {{ range $hot }}<a href="{{ printf "city/%s/" .slug | relURL }}">{{ .name }}400电话</a>{{ end }}
+    </div>
+
+    <h3 class="home-city-sub" style="margin-top:30px">按省份查找</h3>
+    <div class="prov-mini" style="justify-content:center">
       {{ range $provinces }}
-      <a href="#h-{{ .slug }}" class="prov-tab" data-prov="{{ .slug }}">{{ .name }}<span class="cnt">{{ len .cities }}</span></a>
+      <a href="{{ "city/" | relURL }}#pc-{{ .slug }}">{{ .name }}<span>{{ len .cities }}</span></a>
       {{ end }}
     </div>
-    {{ range $i, $pv := $provinces }}
-    <div class="prov-block" id="h-{{ $pv.slug }}" data-prov="{{ $pv.slug }}"{{ if ge $i 6 }} hidden{{ end }}>
-      <h3 class="prov-title">{{ $pv.name }}<span>{{ len $pv.cities }} 个城市</span></h3>
-      <div class="city-list">
-        {{ range $pv.cities }}
-        <a href="{{ printf "city/%s/" .slug | relURL }}">{{ .name }}400电话</a>
-        {{ end }}
-      </div>
-    </div>
-    {{ end }}
-    <div style="text-align:center;margin-top:26px">
-      <a href="{{ "city/" | relURL }}" class="btn btn-primary btn-lg">查看全部城市分站 →</a>
+
+    <div style="text-align:center;margin-top:30px">
+      <a href="{{ "city/" | relURL }}" class="btn btn-primary btn-lg">查看全部 {{ $totalCity }} 个城市 →</a>
     </div>
   </div>
 </section>
-<script>
-(function () {
-  var tabs = document.querySelectorAll('.prov-tab');
-  var blocks = document.querySelectorAll('.prov-block');
-  function setProv(slug) {
-    blocks.forEach(function (b) { b.hidden = false; });
-    tabs.forEach(function (t) { t.classList.toggle('is-on', t.dataset.prov === slug); });
-    if (slug !== 'all') {
-      blocks.forEach(function (b) { b.hidden = (b.dataset.prov !== slug); });
-    }
-    var el = slug === 'all' ? null : document.getElementById('h-' + slug);
-    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-  tabs.forEach(function (t) {
-    t.addEventListener('click', function (e) { e.preventDefault(); setProv(t.dataset.prov); });
-  });
-})();
-</script>
 
 <!-- CTA -->
 <section class="cta-band">

@@ -9,7 +9,8 @@
   {{ with or .Params.keywords .Site.Params.keywords }}<meta name="keywords" content="{{ . }}">{{ end }}
   <meta name="author" content="{{ .Site.Params.siteName }}">
   <link rel="canonical" href="{{ .Permalink }}">
-  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  {{ $css := resources.Get "css/style.css" | minify | fingerprint "sha256" }}
+  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}">
   <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
   <meta property="og:description" content="{{ $desc }}">
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
