@@ -10,6 +10,14 @@
     return '¥' + p.toLocaleString('zh-CN');
   }
 
+  /* 价格展示：优先用飞书原始套餐文本（如 6000/3年），否则回退到数字 */
+  function priceLabel(n) {
+    if (n.priceText) return n.priceText.indexOf('元') === -1
+      ? n.priceText.replace(/^(\d+)/, '¥$1')
+      : '¥' + n.priceText;
+    return fmtPrice(n.price || 0);
+  }
+
   function levelWeight(l) {
     return { A: 3, B: 2, C: 1 }[l] || 0;
   }
@@ -53,15 +61,16 @@
     grid.innerHTML = list.map(function (n) {
       var parts = n.num.split('-');
       var disp = parts[0] + '<span class="sep">-</span>' + parts[1] + '<span class="sep">-</span>' + parts[2];
+      var segTag = n.seg ? '<span class="tag tag-d">' + n.seg + ' 号段</span>' : '<span class="tag tag-d">' + n.cat + '</span>';
       return '<div class="num-card">' +
         '<div class="num">' + disp + '</div>' +
         '<div class="meta">' +
           '<span class="tag ' + (LEVEL_CLS[n.level] || 'tag-plain') + '">' + (LEVEL_NAME[n.level] || n.level) + '</span>' +
-          '<span class="tag tag-d">' + n.cat + '</span>' +
-          '<span class="tag tag-plain">' + n.rate + '元/分钟</span>' +
+          segTag +
+          '<span class="tag tag-plain">' + n.cat + '</span>' +
         '</div>' +
-        '<div class="row"><span>' + n.feat.slice(0, 12) + '</span><span class="cost">' + fmtPrice(n.price) + '</span></div>' +
-        '<div class="row" style="margin-top:4px"><span>预存话费</span><span>¥' + n.prepay + ' 起</span></div>' +
+        '<div class="row"><span>' + n.feat.slice(0, 14) + '</span></div>' +
+        '<div class="row" style="margin-top:4px"><span>套餐价格</span><span class="cost">' + priceLabel(n) + '</span></div>' +
         '<button class="btn btn-primary" onclick="askNum(\'' + n.num + '\')">咨询此号码</button>' +
       '</div>';
     }).join('');
