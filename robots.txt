@@ -1,1 +1,4 @@
 User-agent: *
+Allow: /
+
+Sitemap: https://400%E7%94%B5%E8%AF%9D%E7%94%B3%E8%AF%B7.%E4%B8%AD%E5%9B%BD/sitemap.xml
