@@ -1,0 +1,15 @@
+{{- $p := .Site.Params -}}
+<header class="header">
+  <div class="container">
+    <div class="nav">
+      <a href="/" class="logo">{{ $p.siteName }}<span class="logo-badge">靓号</span></a>
+      <nav class="menu">
+        {{ range .Site.Menus.main }}
+          {{ $isHome := eq .URL "/" }}
+          <a href="{{ .URL }}"{{ if and $isHome (eq $.RelPermalink "/") }} class="active"{{ else if and (not $isHome) (hasPrefix $.RelPermalink .URL) }} class="active"{{ end }}>{{ .Name }}</a>
+        {{ end }}
+      </nav>
+      <a href="tel:{{ $p.phoneRaw }}" class="nav-tel">📞 {{ $p.phone }}</a>
+    </div>
+  </div>
+</header>

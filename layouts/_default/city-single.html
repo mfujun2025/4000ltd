@@ -1,0 +1,86 @@
+{{ define "main" }}
+{{ $p := .Site.Params }}
+{{ $city := .Params.cityName | default "全国" }}
+{{ $nums := .Site.Data.numbers }}
+
+<section class="hero" style="padding:56px 0 48px">
+  <div class="container hero-inner">
+    <h1>{{ $city }}<em>400 靓号</em>在线办理</h1>
+    <p class="sub">{{ $city }}企业专属选号服务，号码全国统一、不分区域，本地上门或线上办理均可，最快当天开通</p>
+    <div class="hero-tags">
+      <span>本地区号段可选</span>
+      <span>对公合同 · 正规发票</span>
+      <span>全程线上，无需跑营业厅</span>
+    </div>
+    <div class="hero-btns">
+      <a href="/lianghao/" class="btn btn-white btn-lg">🎯 挑选靓号</a>
+      <a href="tel:{{ $p.phoneRaw }}" class="btn btn-line btn-lg">📞 {{ $p.phone }}</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-head">
+      <h2>{{ $city }}本地办理流程</h2>
+      <p>线上提交资料，无需到营业厅排队</p>
+    </div>
+    <div class="grid-4">
+      <div class="card"><div class="ico">1</div><h3>在线选号</h3><p>在靓号库按规律筛选，或微信告知偏好，客服推荐 {{ $city }} 可办理号段。</p></div>
+      <div class="card"><div class="ico">2</div><h3>提交资料</h3><p>上传营业执照与法人身份证，线上审核，无需纸质材料邮寄。</p></div>
+      <div class="card"><div class="ico">3</div><h3>签约付款</h3><p>签订对公合同，支付预存话费，开具增值税发票。</p></div>
+      <div class="card"><div class="ico">4</div><h3>当天开通</h3><p>绑定 {{ $city }} 接听号码，配置语音导航，立即对外使用。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-soft">
+  <div class="container">
+    <div class="sec-head">
+      <h2>{{ $city }}企业常用靓号</h2>
+      <p>以下号码全国可办理，{{ $city }}客户可正常使用</p>
+    </div>
+    <div class="num-grid">
+      {{ range first 6 (where $nums "level" "A") }}
+      <div class="num-card">
+        <div class="num">{{ replace .num "-" "<span class='sep'>-</span>" | safeHTML }}</div>
+        <div class="meta">
+          <span class="tag tag-a">A级稀缺</span>
+          <span class="tag tag-d">{{ .cat }}</span>
+        </div>
+        <div class="row"><span>市场参考价</span><span class="cost">¥{{ .price }}</span></div>
+        <button class="btn btn-primary" onclick="showWx()">咨询此号码</button>
+      </div>
+      {{ end }}
+    </div>
+    <div style="text-align:center;margin-top:30px">
+      <a href="/lianghao/" class="btn btn-primary btn-lg">查看全部靓号 →</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="sec-head">
+      <h2>全国服务城市</h2>
+      <p>400 号码全国通用，选择你的城市查看本地办理说明</p>
+    </div>
+    <div class="city-list" style="justify-content:center">
+      {{ range $p.cities }}
+      <a href="/city/{{ .slug }}/"{{ if eq .slug $.Params.citySlug }} style="border-color:#165DFF;color:#165DFF;background:#E8F0FF;font-weight:700"{{ end }}>{{ .name }}400电话</a>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>{{ $city }}企业现在办理，最快当天开通</h2>
+    <p>预存话费即可办理，通话资费低至 0.08 元/分钟，全功能免费开通</p>
+    <div class="hero-btns">
+      <a href="tel:{{ $p.phoneRaw }}" class="btn btn-white btn-lg">📞 {{ $p.phone }}</a>
+      <a href="javascript:;" class="btn btn-green btn-lg" onclick="showWx()">💬 微信咨询</a>
+    </div>
+  </div>
+</section>
+{{ end }}

@@ -1,0 +1,170 @@
+{{ define "main" }}
+{{ $p := .Site.Params }}
+
+<section class="hero">
+  <div class="container hero-inner">
+    <h1>精选 <em>400 靓号</em>，让客户一眼记住你</h1>
+    <p class="sub">AAAA 四连 · ABAB 对子 · AABB 双顺 · ABCD 顺子，规律好记的号码就是企业最便宜的广告</p>
+    <div class="hero-tags">
+      <span>三大运营商正规号码</span>
+      <span>当天开通</span>
+      <span>全功能免费</span>
+      <span>对公合同 · 正规发票</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#numlist" class="btn btn-white btn-lg">🎯 立即选号</a>
+      <a href="javascript:;" class="btn btn-line btn-lg" onclick="showWx()">💬 微信咨询</a>
+    </div>
+  </div>
+</section>
+
+<!-- 筛选面板 -->
+<div class="container">
+  <div class="search-panel">
+    <h3>🔍 快速筛选靓号</h3>
+    <div class="filter-row">
+      <span class="label">号码规律</span>
+      <span class="chip active" data-cat="all">全部</span>
+      <span class="chip" data-cat="四连号">四连号 AAAA</span>
+      <span class="chip" data-cat="对子号">对子号 ABAB</span>
+      <span class="chip" data-cat="双顺号">双顺号 AABB</span>
+      <span class="chip" data-cat="顺子号">顺子号 ABCD</span>
+      <span class="chip" data-cat="倒顺号">倒顺号 DCBA</span>
+      <span class="chip" data-cat="三连号">三连号 AAA</span>
+      <span class="chip" data-cat="纪念号">纪念号</span>
+      <span class="chip" data-cat="尾对号">尾对号</span>
+    </div>
+    <div class="filter-row">
+      <span class="label">等级</span>
+      <span class="chip active" data-level="all">全部</span>
+      <span class="chip" data-level="A">A 级 · 稀缺</span>
+      <span class="chip" data-level="B">B 级 · 优选</span>
+      <span class="chip" data-level="C">C 级 · 实惠</span>
+    </div>
+    <div class="search-input-row">
+      <input type="text" id="numSearch" placeholder="输入号码片段搜索，如 8888、1618、6666">
+      <button class="btn btn-primary" onclick="doSearch()">搜索</button>
+    </div>
+  </div>
+</div>
+
+<!-- 靓号列表 -->
+<section id="numlist">
+  <div class="container">
+    <div class="num-toolbar">
+      <div class="num-count">共找到 <b id="cnt">0</b> 个靓号</div>
+      <div class="sort-btns">
+        <span class="chip active" data-sort="level">按等级</span>
+        <span class="chip" data-sort="price-desc">价格从高到低</span>
+        <span class="chip" data-sort="price-asc">价格从低到高</span>
+      </div>
+    </div>
+    <div class="num-grid" id="numGrid"></div>
+  </div>
+</section>
+
+<!-- 说明 -->
+<section class="sec-soft">
+  <div class="container">
+    <div class="sec-head">
+      <h2>靓号等级说明</h2>
+      <p>不同规律对应不同稀缺度，价格随号码规律浮动</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="ico">A</div>
+        <h3>A 级 · 稀缺靓号</h3>
+        <p>AAAA 四连号、ABAB 对子号。识别度最高，客户过目不忘，适合品牌企业塑造高端形象。</p>
+      </div>
+      <div class="card">
+        <div class="ico">B</div>
+        <h3>B 级 · 优选靓号</h3>
+        <p>AABB 双顺、ABCD 顺子、AAA 三连。规律感强、好读好记，性价比与辨识度兼顾。</p>
+      </div>
+      <div class="card">
+        <div class="ico">C</div>
+        <h3>C 级 · 实惠靓号</h3>
+        <p>纪念号、尾对号等。数字寓意好、简洁大方，预算有限也能选到顺眼的号码。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 办理流程 -->
+<section>
+  <div class="container">
+    <div class="sec-head">
+      <h2>选号办理流程</h2>
+      <p>4 步完成，最快当天开通</p>
+    </div>
+    <div class="grid-4">
+      <div class="card">
+        <div class="ico">1</div>
+        <h3>筛选号码</h3>
+        <p>在上方靓号库按规律或数字筛选，或直接微信告知需求，人工推荐。</p>
+      </div>
+      <div class="card">
+        <div class="ico">2</div>
+        <h3>确认锁定</h3>
+        <p>确认号码后为你锁定，提交营业执照等资料，最快 10 分钟完成审核。</p>
+      </div>
+      <div class="card">
+        <div class="ico">3</div>
+        <h3>签约付款</h3>
+        <p>签订对公合同，支付预存话费，开具正规增值税发票。</p>
+      </div>
+      <div class="card">
+        <div class="ico">4</div>
+        <h3>开通使用</h3>
+        <p>绑定接听号码、设置语音导航与录音，当天即可对外使用。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 在线申请 -->
+<section class="sec-soft" id="apply">
+  <div class="container">
+    <div class="sec-head">
+      <h2>在线申请靓号</h2>
+      <p>填写信息，客服 10 分钟内联系你，提供号码清单与报价</p>
+    </div>
+    <div class="form-box">
+      <form onsubmit="return submitForm(event)">
+        <div class="form-group">
+          <label>您的称呼 <span class="req">*</span></label>
+          <input type="text" name="name" placeholder="如：王经理">
+        </div>
+        <div class="form-group">
+          <label>联系电话 <span class="req">*</span></label>
+          <input type="text" name="tel" placeholder="用于接收号码清单">
+        </div>
+        <div class="form-group">
+          <label>意向号码规律</label>
+          <select name="cat">
+            <option value="">不限 / 听推荐</option>
+            <option>四连号 AAAA</option>
+            <option>对子号 ABAB</option>
+            <option>双顺号 AABB</option>
+            <option>顺子号 ABCD</option>
+            <option>三连号 AAA</option>
+            <option>纪念号</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>备注需求</label>
+          <textarea name="remark" rows="3" placeholder="如：预算、行业、希望包含的数字（选填）"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%">提交申请，获取报价</button>
+        <div class="form-ok">✅ 提交成功！客服将尽快与您联系</div>
+        <p class="form-tip">我们承诺：信息仅用于号码咨询，绝不外泄</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+window.__NUMBERS__ = {{ .Site.Data.numbers | jsonify | safeJS }};
+</script>
+<script src="/js/lianghao.js" defer></script>
+{{ end }}

@@ -1,0 +1,43 @@
+{{ define "main" }}
+{{ $p := .Site.Params }}
+<section style="padding:38px 0 60px">
+  <div class="container">
+    <article class="article">
+      <div class="breadcrumb">
+        <a href="/">首页</a> / <a href="/posts/">400知识库</a> / {{ .Title | truncate 22 }}
+      </div>
+
+      <h1>{{ .Title }}</h1>
+      <div class="article-meta">
+        {{ with .Params.categories }}<span class="cat">{{ index . 0 }}</span>{{ end }}
+        <span>📅 {{ .Date.Format "2006年01月02日" }}</span>
+        <span>⏱ 约 {{ .ReadingTime }} 分钟读完</span>
+        <span>👁 {{ .Params.views | default 0 }} 次浏览</span>
+      </div>
+
+      <div class="article-body">
+        {{ .Content }}
+      </div>
+
+      <div class="cta-inline">
+        <h4>想选一个好记的 400 靓号？</h4>
+        <p>AAAA 四连、ABAB 对子、AABB 双顺，稀缺号码实时更新，人工一对一帮你挑</p>
+        <a href="/lianghao/" class="btn btn-primary">🎯 进入靓号库</a>
+        <a href="javascript:;" class="btn btn-green" onclick="showWx()">💬 微信咨询</a>
+      </div>
+
+      {{ $related := where (where .Site.RegularPages "Section" "posts") "Permalink" "ne" .Permalink }}
+      {{ with first 6 $related }}
+      <div class="related">
+        <h3>📖 相关阅读</h3>
+        <div class="related-list">
+          {{ range . }}
+          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+          {{ end }}
+        </div>
+      </div>
+      {{ end }}
+    </article>
+  </div>
+</section>
+{{ end }}
