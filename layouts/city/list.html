@@ -1,0 +1,106 @@
+{{ define "main" }}
+{{ $p := .Site.Params }}
+{{ $provinces := $p.provinces }}
+{{ $total := 0 }}{{ range $provinces }}{{ $total = add $total (len .cities) }}{{ end }}
+
+<section style="padding:44px 0 20px">
+  <div class="container">
+    <div class="breadcrumb"><a href="{{ "" | relURL }}">首页</a> / 城市分站</div>
+    <h1 style="font-size:30px;margin-bottom:12px">全国 400 电话办理服务城市</h1>
+    <p style="color:#86909C">覆盖全国 {{ len $provinces }} 个省级行政区、{{ $total }} 个地级行政区，本地化服务团队就近对接，400 号码全国通用、不分区域</p>
+  </div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="container">
+    <div class="prov-tabs">
+      <a href="#p-all" class="prov-tab is-on" data-prov="all">全部（{{ $total }}）</a>
+      {{ range $provinces }}
+      <a href="#p-{{ .slug }}" class="prov-tab" data-prov="{{ .slug }}">{{ .name }}<span class="cnt">{{ len .cities }}</span></a>
+      {{ end }}
+    </div>
+
+    {{ range $i, $pv := $provinces }}
+    <div class="prov-block" id="p-{{ $pv.slug }}" data-prov="{{ $pv.slug }}"{{ if ge $i 6 }} hidden{{ end }}>
+      <h2 class="prov-title">{{ $pv.name }}<span>{{ len $pv.cities }} 个城市</span></h2>
+      <div class="city-list">
+        {{ range $pv.cities }}
+        <a href="{{ printf "city/%s/" .slug | relURL }}">{{ .name }}400电话</a>
+        {{ end }}
+      </div>
+    </div>
+    {{ end }}
+    <div style="text-align:center;margin-top:10px">
+      <button class="btn btn-line" id="provMore" type="button">展开全部 34 个省级行政区 ↓</button>
+    </div>
+  </div>
+</section>
+
+<section class="sec-soft">
+  <div class="container">
+    <div class="sec-head">
+      <h2>为什么 400 电话要选正规服务商</h2>
+      <p>号码全国统一，但服务商资质差别很大</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="ico">✓</div>
+        <h3>号码归属可查</h3>
+        <p>正规渠道办理的 400 号码可在运营商系统查询到归属企业，不会出现"来路不明"的号码。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🛡</div>
+        <h3>售后有保障</h3>
+        <p>号码被误标记、呼入异常都能及时处理，避免因服务商跑路导致号码停用。</p>
+      </div>
+      <div class="card">
+        <div class="ico">📄</div>
+        <h3>合同发票齐全</h3>
+        <p>签订正规对公合同、开具增值税发票，企业财务合规、报销无障碍。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="container">
+    <h2>你的城市有没有服务网点？</h2>
+    <p>400 号码全国通用，无论你在哪个城市，都可以线上办理、当天开通</p>
+    <div class="hero-btns">
+      <a href="{{ "lianghao/" | relURL }}" class="btn btn-white btn-lg">先挑靓号</a>
+      <a href="tel:{{ $p.phoneRaw }}" class="btn btn-line btn-lg">📞 {{ $p.phone }}</a>
+    </div>
+  </div>
+</section>
+
+<script>
+(function () {
+  var tabs = document.querySelectorAll('.prov-tab');
+  var blocks = document.querySelectorAll('.prov-block');
+  var more = document.getElementById('provMore');
+  var expanded = false;
+
+  function showAll() {
+    expanded = true;
+    if (more) more.style.display = 'none';
+    blocks.forEach(function (b) { b.hidden = false; });
+  }
+  function setProv(slug) {
+    // 选中某个省时，先全部展开再隐藏其它
+    expanded = true;
+    if (more) more.style.display = 'none';
+    blocks.forEach(function (b) { b.hidden = false; });
+    tabs.forEach(function (t) { t.classList.toggle('is-on', t.dataset.prov === slug); });
+    if (slug !== 'all') {
+      blocks.forEach(function (b) { b.hidden = (b.dataset.prov !== slug); });
+    }
+    var el = slug === 'all' ? null : document.getElementById('p-' + slug);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+  tabs.forEach(function (t) {
+    t.addEventListener('click', function (e) { e.preventDefault(); setProv(t.dataset.prov); });
+  });
+  if (more) more.addEventListener('click', showAll);
+})();
+</script>
+{{ end }}
