@@ -294,6 +294,36 @@ section { padding: 68px 0; }
   background: #fff; font-size: 14px; color: var(--text-sub);
 }
 .city-list a:hover { border-color: var(--primary); color: var(--primary); background: var(--primary-light); }
+.city-list a.is-cur { border-color: var(--primary); color: var(--primary); background: var(--primary-light); font-weight: 700; }
+
+/* 省份分组 */
+.prov-tabs {
+  display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 26px;
+  padding-bottom: 18px; border-bottom: 1px solid var(--border);
+}
+.prov-tab {
+  padding: 7px 14px; border: 1px solid var(--border); border-radius: 20px;
+  background: #fff; font-size: 13px; color: var(--text-sub); cursor: pointer;
+  display: inline-flex; align-items: center; gap: 5px; transition: all .16s;
+}
+.prov-tab .cnt {
+  font-size: 11px; color: #9aa5b5; background: #f2f4f8;
+  padding: 1px 6px; border-radius: 9px; line-height: 1.5;
+}
+.prov-tab:hover { border-color: var(--primary); color: var(--primary); }
+.prov-tab.is-on {
+  background: var(--primary); border-color: var(--primary); color: #fff; font-weight: 600;
+}
+.prov-tab.is-on .cnt { background: rgba(255,255,255,.24); color: #fff; }
+
+.prov-block { margin-bottom: 30px; scroll-margin-top: 80px; }
+.prov-block[hidden] { display: none; }
+.prov-title {
+  font-size: 17px; margin-bottom: 14px; padding-left: 11px;
+  border-left: 4px solid var(--primary); line-height: 1.3;
+  display: flex; align-items: baseline; gap: 9px;
+}
+.prov-title span { font-size: 12px; font-weight: 400; color: #9aa5b5; }
 
 /* ---------- 表单 ---------- */
 .form-box {
