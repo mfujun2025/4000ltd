@@ -1,0 +1,74 @@
+{{ define "main" }}
+{{ $p := .Site.Params }}
+<section class="hero" style="padding:52px 0 44px">
+  <div class="container hero-inner">
+    <h1>联系<em>我们</em></h1>
+    <p class="sub">1 对 1 人工选号，不转机器人。选号、办理、售后一条微信搞定</p>
+    <div class="hero-btns">
+      <a href="tel:{{ $p.phoneRaw }}" class="btn btn-white btn-lg">📞 {{ $p.phone }}</a>
+      <a href="javascript:;" class="btn btn-line btn-lg" onclick="showWx()">💬 微信咨询</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="grid-3">
+      <div class="card">
+        <div class="ico">📞</div>
+        <h3>电话咨询</h3>
+        <p style="font-size:19px;font-weight:700;color:#E1251B;margin:10px 0">{{ $p.phone }}</p>
+        <p>工作日 9:00 - 21:00，直接说需求，我们现场查号报价</p>
+      </div>
+      <div class="card">
+        <div class="ico">💬</div>
+        <h3>微信咨询</h3>
+        <p style="font-size:19px;font-weight:700;color:#07C160;margin:10px 0">{{ $p.wechat }}</p>
+        <p>推荐方式，可发号码清单、实拍截图，随时回看聊天记录</p>
+        <button class="btn btn-primary" style="width:100%;margin-top:12px" onclick="showWx()">复制微信号</button>
+      </div>
+      <div class="card">
+        <div class="ico">🌐</div>
+        <h3>服务范围</h3>
+        <p style="font-size:19px;font-weight:700;margin:10px 0">全国</p>
+        <p>400 号码全国统一、不分区域，全程线上办理，无需到店</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec-soft">
+  <div class="container">
+    <div class="sec-head">
+      <h2>办理流程</h2>
+      <p>资料齐全最快 10 分钟审核通过，当天开通</p>
+    </div>
+    <div class="grid-4">
+      <div class="card"><div class="ico">1</div><h3>沟通需求</h3><p>告诉我们行业、预算和号码偏好，比如要尾巴 88 还是要连号。</p></div>
+      <div class="card"><div class="ico">2</div><h3>人工推荐</h3><p>从在售号库里挑 3-5 个合适的发给你，附真实价格。</p></div>
+      <div class="card"><div class="ico">3</div><h3>锁定号码</h3><p>选定后立即锁定，防止稀缺号码被其他客户抢走。</p></div>
+      <div class="card"><div class="ico">4</div><h3>签约开通</h3><p>提交营业执照与法人身份证，对公签约，当天开通。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="sec-head">
+      <h2>常见问题</h2>
+      <p>办理前最常被问到的几件事</p>
+    </div>
+    <div class="article-body" style="max-width:820px;margin:0 auto">
+      {{ .Content }}
+    </div>
+  </div>
+</section>
+
+<section class="sec-soft">
+  <div class="container" style="text-align:center">
+    <h2 style="font-size:24px;margin-bottom:12px">看中号码了？现在就锁定</h2>
+    <p style="color:#86909C;margin-bottom:24px">稀缺号码先到先得，咨询不收费</p>
+    <a href="{{ "lianghao/" | relURL }}" class="btn btn-primary btn-lg">🎯 进入靓号库选号</a>
+  </div>
+</section>
+{{ end }}
