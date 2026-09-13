@@ -34,7 +34,7 @@
     </div>
     <div class="search-input-row">
       <input type="text" id="homeSearch" placeholder="输入你喜欢的数字，如 8888 / 1618 / 6666，去靓号库查找">
-      <button class="btn btn-primary" onclick="location.href='/lianghao/'">搜索靓号</button>
+      <button class="btn btn-primary" onclick="location.href='{{ "lianghao/" | relURL }}'">搜索靓号</button>
     </div>
   </div>
 </div>
@@ -205,7 +205,7 @@ function askNum(num) {
   if (typeof toast === 'function') toast('请添加微信咨询号码：' + num);
 }
 document.getElementById('homeSearch').addEventListener('keydown', function (e) {
-  if (e.key === 'Enter') location.href = '/lianghao/';
+  if (e.key === 'Enter') location.href = '{{ "lianghao/" | relURL }}';
 });
 </script>
 {{ end }}
