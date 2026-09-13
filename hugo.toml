@@ -1,4 +1,6 @@
-baseURL = "/"
+baseURL = "https://mfujun2025.github.io/4000ltd/"
+relativeURLs = false
+canonifyURLs = false
 locale = "zh-CN"
 title = "400电话靓号网 | 全国400靓号在线办理中心"
 enableRobotsTXT = true

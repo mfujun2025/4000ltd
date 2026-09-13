@@ -2,7 +2,7 @@
 <header class="header">
   <div class="container">
     <div class="nav">
-      <a href="/" class="logo">{{ $p.siteName }}<span class="logo-badge">靓号</span></a>
+      <a href="{{ "" | relURL }}" class="logo">{{ $p.siteName }}<span class="logo-badge">靓号</span></a>
       <nav class="menu">
         {{ range .Site.Menus.main }}
           {{ $isHome := eq .URL "/" }}

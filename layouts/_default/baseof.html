@@ -9,7 +9,7 @@
   {{ with or .Params.keywords .Site.Params.keywords }}<meta name="keywords" content="{{ . }}">{{ end }}
   <meta name="author" content="{{ .Site.Params.siteName }}">
   <link rel="canonical" href="{{ .Permalink }}">
-  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
   <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
   <meta property="og:description" content="{{ $desc }}">
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">

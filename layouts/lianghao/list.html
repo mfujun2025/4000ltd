@@ -166,5 +166,5 @@
 <script>
 window.__NUMBERS__ = {{ .Site.Data.numbers | jsonify | safeJS }};
 </script>
-<script src="/js/lianghao.js" defer></script>
+<script src="{{ "js/lianghao.js" | relURL }}" defer></script>
 {{ end }}

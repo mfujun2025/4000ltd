@@ -1,16 +1,16 @@
 {{ define "main" }}
 {{ $cats := slice
-  (dict "key" "basics"  "name" "基础科普" "desc" "400电话是什么、和800的区别、核心价值" "ico" "📘")
-  (dict "key" "apply"   "name" "办理实务" "desc" "资料清单、办理流程、过户续费与避坑" "ico" "📝")
-  (dict "key" "feature" "name" "功能详解" "desc" "通话录音、IVR导航、地域路由、黑名单" "ico" "⚙️")
-  (dict "key" "number"  "name" "选号技巧" "desc" "号段选择、靓号规则、好号码怎么挑" "ico" "🎯")
-  (dict "key" "industry" "name" "行业应用" "desc" "电商、教培、医美、装修、餐饮等实操" "ico" "🏢")
-  (dict "key" "operate" "name" "运营提升" "desc" "用400电话提升转化率与客服水平" "ico" "📈")
+  (dict "key" "基础科普" "name" "基础科普" "desc" "400电话是什么、和800的区别、核心价值" "ico" "📘")
+  (dict "key" "办理实务" "name" "办理实务" "desc" "资料清单、办理流程、过户续费与避坑" "ico" "📝")
+  (dict "key" "功能详解" "name" "功能详解" "desc" "通话录音、IVR导航、地域路由、黑名单" "ico" "⚙️")
+  (dict "key" "选号技巧" "name" "选号技巧" "desc" "号段选择、靓号规则、好号码怎么挑" "ico" "🎯")
+  (dict "key" "行业应用" "name" "行业应用" "desc" "电商、教培、医美、装修、餐饮等实操" "ico" "🏢")
+  (dict "key" "运营提升" "name" "运营提升" "desc" "用400电话提升转化率与客服水平" "ico" "📈")
 }}
 
 <section style="padding:44px 0 8px">
   <div class="container">
-    <div class="breadcrumb"><a href="/">首页</a> / 400 知识库</div>
+    <div class="breadcrumb"><a href="{{ "" | relURL }}">首页</a> / 400 知识库</div>
     <h1 style="font-size:30px;margin-bottom:12px">400 电话知识库</h1>
     <p style="color:#86909C">共 {{ len .Pages }} 篇指南，覆盖选号、办理、功能配置与运营技巧</p>
   </div>
@@ -21,7 +21,7 @@
   <div class="container">
     <div class="grid-3">
       {{ range $cats }}
-      <a href="/categories/{{ .key }}/" class="card" style="display:block">
+      <a href="{{ printf "categories/%s/" .key | relURL }}" class="card" style="display:block">
         <div class="ico">{{ .ico }}</div>
         <h3>{{ .name }}</h3>
         <p>{{ .desc }}</p>

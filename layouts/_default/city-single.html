@@ -13,7 +13,7 @@
       <span>全程线上，无需跑营业厅</span>
     </div>
     <div class="hero-btns">
-      <a href="/lianghao/" class="btn btn-white btn-lg">🎯 挑选靓号</a>
+      <a href="{{ "lianghao/" | relURL }}" class="btn btn-white btn-lg">🎯 挑选靓号</a>
       <a href="tel:{{ $p.phoneRaw }}" class="btn btn-line btn-lg">📞 {{ $p.phone }}</a>
     </div>
   </div>
@@ -54,7 +54,7 @@
       {{ end }}
     </div>
     <div style="text-align:center;margin-top:30px">
-      <a href="/lianghao/" class="btn btn-primary btn-lg">查看全部靓号 →</a>
+      <a href="{{ "lianghao/" | relURL }}" class="btn btn-primary btn-lg">查看全部靓号 →</a>
     </div>
   </div>
 </section>
@@ -67,7 +67,7 @@
     </div>
     <div class="city-list" style="justify-content:center">
       {{ range $p.cities }}
-      <a href="/city/{{ .slug }}/"{{ if eq .slug $.Params.citySlug }} style="border-color:#165DFF;color:#165DFF;background:#E8F0FF;font-weight:700"{{ end }}>{{ .name }}400电话</a>
+      <a href="{{ printf "city/%s/" .slug | relURL }}"{{ if eq .slug $.Params.citySlug }} style="border-color:#165DFF;color:#165DFF;background:#E8F0FF;font-weight:700"{{ end }}>{{ .name }}400电话</a>
       {{ end }}
     </div>
   </div>

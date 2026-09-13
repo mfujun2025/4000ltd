@@ -2,7 +2,7 @@
 {{ $p := .Site.Params }}
 <section style="padding:44px 0 20px">
   <div class="container">
-    <div class="breadcrumb"><a href="/">首页</a> / 城市分站</div>
+    <div class="breadcrumb"><a href="{{ "" | relURL }}">首页</a> / 城市分站</div>
     <h1 style="font-size:30px;margin-bottom:12px">全国 400 电话办理服务城市</h1>
     <p style="color:#86909C">本地化服务团队，就近对接，400 号码全国通用、不分区域</p>
   </div>
@@ -12,7 +12,7 @@
   <div class="container">
     <div class="city-list">
       {{ range $p.cities }}
-      <a href="/city/{{ .slug }}/">{{ .name }}400电话</a>
+      <a href="{{ printf "city/%s/" .slug | relURL }}">{{ .name }}400电话</a>
       {{ end }}
     </div>
   </div>
@@ -49,7 +49,7 @@
     <h2>你的城市有没有服务网点？</h2>
     <p>400 号码全国通用，无论你在哪个城市，都可以线上办理、当天开通</p>
     <div class="hero-btns">
-      <a href="/lianghao/" class="btn btn-white btn-lg">先挑靓号</a>
+      <a href="{{ "lianghao/" | relURL }}" class="btn btn-white btn-lg">先挑靓号</a>
       <a href="tel:{{ $p.phoneRaw }}" class="btn btn-line btn-lg">📞 {{ $p.phone }}</a>
     </div>
   </div>

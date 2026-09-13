@@ -2,199 +2,199 @@
 {{ $p := .Site.Params }}
 {{ $nums := .Site.Data.numbers }}
 
-<section class="hero" data-page-node-id="5XRCcK0jwR6kfEdDjiSXQh">
-  <div class="container hero-inner" data-page-node-id="UAAS3eSegweRuqI7XN29oZ">
-    <h1 data-page-node-id="J5Pj1w0fVNI6qwHIPnHRdE">企业 <em data-page-node-id="KEION8szBIDg0f5StnQQ3I">400 靓号</em>在线办理中心</h1>
-    <p class="sub" data-page-node-id="AxzJAhUSrcegzKEnI6MkcJ">AAAA 四连 · ABAB 对子 · AABB 双顺 · ABCD 顺子，好记的号码就是企业最便宜的广告</p>
-    <div class="hero-tags" data-page-node-id="DdpGn3jpAv91dpDcl089IY">
-      <span data-page-node-id="FOwT1xXCdZANnpoNzOB0CT">三大运营商正规号码</span>
-      <span data-page-node-id="5i3kROwWYPftw8naEJUJvI">当天开通</span>
-      <span data-page-node-id="QA4ruG6OB3tcCmi9MmMZrF">通话录音 · 语音导航免费</span>
-      <span data-page-node-id="0kGO4ktCS3HCTPTRAgSl2W">对公合同 · 正规发票</span>
+<section class="hero">
+  <div class="container hero-inner">
+    <h1>企业 <em>400 靓号</em>在线办理中心</h1>
+    <p class="sub">AAAA 四连 · ABAB 对子 · AABB 双顺 · ABCD 顺子，好记的号码就是企业最便宜的广告</p>
+    <div class="hero-tags">
+      <span>三大运营商正规号码</span>
+      <span>当天开通</span>
+      <span>通话录音 · 语音导航免费</span>
+      <span>对公合同 · 正规发票</span>
     </div>
-    <div class="hero-btns" data-page-node-id="zopZPJ3xwI3uz8j5CHOonJ">
-      <a href="/lianghao/" class="btn btn-white btn-lg" data-page-node-id="DOWQF9QICJANJqhPpxgmga">🎯 进入靓号库选号</a>
-      <a href="tel:{{ $p.phoneRaw }}" class="btn btn-line btn-lg" data-page-node-id="Z5GEv6N0guv01Cb9QJeaF9">📞 {{ $p.phone }}</a>
+    <div class="hero-btns">
+      <a href="{{ "lianghao/" | relURL }}" class="btn btn-white btn-lg">🎯 进入靓号库选号</a>
+      <a href="tel:{{ $p.phoneRaw }}" class="btn btn-line btn-lg">📞 {{ $p.phone }}</a>
     </div>
   </div>
 </section>
 
 <!-- 搜索面板 -->
-<div class="container" data-page-node-id="kUaVhDRJocMaJNJmJelBwb">
-  <div class="search-panel" data-page-node-id="dckY7kNZH858Jau5cYvwID">
-    <h3 data-page-node-id="LKwuZdDM3tzSsiBKZKC0FD">🔍 找一个好记的号码</h3>
-    <div class="filter-row" data-page-node-id="usECBEAE8euYfb14cOi6Bj">
-      <span class="label" data-page-node-id="HYeJJEfAUWlk6DATsibAWu">热门规律</span>
-      <a class="chip" href="/lianghao/" data-page-node-id="VUmVPiak0KH0EqOFjBA6Rx">四连号 AAAA</a>
-      <a class="chip" href="/lianghao/" data-page-node-id="a8JP1ATkD1ZWLqRYxqpGs5">对子号 ABAB</a>
-      <a class="chip" href="/lianghao/" data-page-node-id="0rCOHXVV95kYcHRl3KH8hu">双顺号 AABB</a>
-      <a class="chip" href="/lianghao/" data-page-node-id="IrZnmzD5FVAu89ZuOJfCDH">顺子号 ABCD</a>
-      <a class="chip" href="/lianghao/" data-page-node-id="lhggvpp87NGErBLFCVTo04">三连号 AAA</a>
-      <a class="chip" href="/lianghao/" data-page-node-id="ufGfMqZ0rVByWC9eSbTeIM">纪念号</a>
+<div class="container">
+  <div class="search-panel">
+    <h3>🔍 找一个好记的号码</h3>
+    <div class="filter-row">
+      <span class="label">热门规律</span>
+      <a class="chip" href="{{ "lianghao/" | relURL }}">四连号 AAAA</a>
+      <a class="chip" href="{{ "lianghao/" | relURL }}">对子号 ABAB</a>
+      <a class="chip" href="{{ "lianghao/" | relURL }}">双顺号 AABB</a>
+      <a class="chip" href="{{ "lianghao/" | relURL }}">顺子号 ABCD</a>
+      <a class="chip" href="{{ "lianghao/" | relURL }}">三连号 AAA</a>
+      <a class="chip" href="{{ "lianghao/" | relURL }}">纪念号</a>
     </div>
-    <div class="search-input-row" data-page-node-id="GuqcR6sIIgyByrQ5nF7nfl">
-      <input type="text" id="homeSearch" placeholder="输入你喜欢的数字，如 8888 / 1618 / 6666，去靓号库查找" data-page-node-id="YJJXTg6ZPf3BnW5h4UGDqN">
-      <button class="btn btn-primary" onclick="location.href='/lianghao/'" data-page-node-id="NCHF6NEqr9c75BxStjujZJ">搜索靓号</button>
+    <div class="search-input-row">
+      <input type="text" id="homeSearch" placeholder="输入你喜欢的数字，如 8888 / 1618 / 6666，去靓号库查找">
+      <button class="btn btn-primary" onclick="location.href='/lianghao/'">搜索靓号</button>
     </div>
   </div>
 </div>
 
 <!-- 精选靓号 -->
-<section data-page-node-id="IeZRLwmZ0GG05jiy48IESF">
-  <div class="container" data-page-node-id="H8lDv7g79v2sHwtQuQKIyJ">
-    <div class="sec-head" data-page-node-id="v6dDF2gozsWV27MjQ6GFBo">
-      <h2 data-page-node-id="wkmBDxIQlWJ1tEDHtSsvhz">今日精选靓号</h2>
-      <p data-page-node-id="73fUkEyLjkmtEAB88XmfJj">稀缺号码实时更新，看中直接咨询锁定</p>
+<section>
+  <div class="container">
+    <div class="sec-head">
+      <h2>今日精选靓号</h2>
+      <p>稀缺号码实时更新，看中直接咨询锁定</p>
     </div>
-    <div class="num-grid" data-page-node-id="Jq1v6yxmPd2axpDHJMj9XZ">
+    <div class="num-grid">
       {{ range first 8 (where $nums "level" "A") }}
-      <div class="num-card" data-page-node-id="6bWjMRZFDwsl3aYoHPFN6g">
-        <div class="num" data-page-node-id="VIXkoVuZxZlWjA5syq9ZM1">{{ replace .num "-" "<span class='sep' data-page-node-id="gS7DAtSk4SwXQEc7DOD9Ft">-</span>" | safeHTML }}</div>
-        <div class="meta" data-page-node-id="gSpJ5Nbx94QTKzkcZw5cKw">
-          <span class="tag tag-a" data-page-node-id="SZo4E132yDS2n8I2CY1GMg">A级稀缺</span>
-          <span class="tag tag-d" data-page-node-id="hADbhV2Cq7vd2XZoRYSzsh">{{ .cat }}</span>
+      <div class="num-card">
+        <div class="num">{{ replace .num "-" "<span class='sep'>-</span>" | safeHTML }}</div>
+        <div class="meta">
+          <span class="tag tag-a">A级稀缺</span>
+          <span class="tag tag-d">{{ .cat }}</span>
         </div>
-        <div class="row" data-page-node-id="lZjq0GikJlnvyxXjdUapcU"><span data-page-node-id="mjTsQQ1FIgEOIL3XKMxAUo">市场参考价</span><span class="cost" data-page-node-id="pnwR1gERHobLNQcFOUh2lU">¥{{ lang.FormatNumber 0 .price }}</span></div>
-        <button class="btn btn-primary" onclick="askNum('{{ .num }}')" data-page-node-id="gAHNqY3e0jXRP8lX4FpZPk">咨询此号码</button>
+        <div class="row"><span>市场参考价</span><span class="cost">¥{{ lang.FormatNumber 0 .price }}</span></div>
+        <button class="btn btn-primary" onclick="askNum('{{ .num }}')">咨询此号码</button>
       </div>
       {{ end }}
     </div>
-    <div style="text-align:center;margin-top:32px" data-page-node-id="xb287Dii9DHHG5A6TaIb0h">
-      <a href="/lianghao/" class="btn btn-primary btn-lg" data-page-node-id="8wbvt7bpJ0j0RXTGDmgeD6">查看全部 72 个靓号 →</a>
+    <div style="text-align:center;margin-top:32px">
+      <a href="{{ "lianghao/" | relURL }}" class="btn btn-primary btn-lg">查看全部 72 个靓号 →</a>
     </div>
   </div>
 </section>
 
 <!-- 服务优势 -->
-<section class="sec-soft" data-page-node-id="uv6y84Nc98ARsrvn4BL1PV">
-  <div class="container" data-page-node-id="jyqsQxFfaZBAFiqhIBLrcD">
-    <div class="sec-head" data-page-node-id="E2WWj83nCCjyBOleFzU1Tf">
-      <h2 data-page-node-id="eWALAi8mlTqzinnL2Z49h5">为什么选择我们</h2>
-      <p data-page-node-id="fWwRcTlqbP3QDZ5mqFCluk">正规通道 · 号码可查 · 全功能免费</p>
+<section class="sec-soft">
+  <div class="container">
+    <div class="sec-head">
+      <h2>为什么选择我们</h2>
+      <p>正规通道 · 号码可查 · 全功能免费</p>
     </div>
-    <div class="grid-4" data-page-node-id="nRWr9IDMLNws5W79XRv5tw">
-      <div class="card" data-page-node-id="GY0n60Jg7UdduaKAWFKxGX">
-        <div class="ico" data-page-node-id="1DZDcsHEkGF2HVOgOlfVBW">✓</div>
-        <h3 data-page-node-id="13Oe4dgRgsL1qRob8zTBRA">运营商正规号码</h3>
-        <p data-page-node-id="w7OHXQAynpoyDrIyqy8B42">移动、联通、电信三大运营商一手号段，号码全国可查，稳定不封号。</p>
+    <div class="grid-4">
+      <div class="card">
+        <div class="ico">✓</div>
+        <h3>运营商正规号码</h3>
+        <p>移动、联通、电信三大运营商一手号段，号码全国可查，稳定不封号。</p>
       </div>
-      <div class="card" data-page-node-id="4PmMVRqFHRG6AUXuGZh3Se">
-        <div class="ico" data-page-node-id="J3ccMc64p0rjF3d51uZ9gO">⚡</div>
-        <h3 data-page-node-id="hnjjCT4jHSoEI0JB7ZFDAF">当天开通</h3>
-        <p data-page-node-id="Ukn9oEzt3EHPQ0dhIpGg2r">资料齐全最快 10 分钟审核通过，当天绑定使用，不耽误业务开展。</p>
+      <div class="card">
+        <div class="ico">⚡</div>
+        <h3>当天开通</h3>
+        <p>资料齐全最快 10 分钟审核通过，当天绑定使用，不耽误业务开展。</p>
       </div>
-      <div class="card" data-page-node-id="uahdWP0kdDDkKuC1XxibOd">
-        <div class="ico" data-page-node-id="JNZHALei7AogsxvhnMwFoo">🎁</div>
-        <h3 data-page-node-id="QDsLyouEI6o6SpgrFIHIq1">全功能免费</h3>
-        <p data-page-node-id="WqOV3uspissGqjrtnAYLeA">通话录音、IVR 语音导航、多机绑定、黑名单、来电统计全部免费开通。</p>
+      <div class="card">
+        <div class="ico">🎁</div>
+        <h3>全功能免费</h3>
+        <p>通话录音、IVR 语音导航、多机绑定、黑名单、来电统计全部免费开通。</p>
       </div>
-      <div class="card" data-page-node-id="mLfgyf7sJn5Td84Gdfnoe5">
-        <div class="ico" data-page-node-id="qU8P10Cw5hPBaQpa0oeJsQ">📄</div>
-        <h3 data-page-node-id="fWVGpkF06kx3FXIrPyVEZ6">合同发票齐全</h3>
-        <p data-page-node-id="Y7LbuYx6IKS5ITRucgjjtl">签订对公合同，开具正规增值税发票，企业财务报销无障碍。</p>
+      <div class="card">
+        <div class="ico">📄</div>
+        <h3>合同发票齐全</h3>
+        <p>签订对公合同，开具正规增值税发票，企业财务报销无障碍。</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- 套餐 -->
-<section id="pricing" data-page-node-id="v12QYbJ8wwx5mL4wKgOsJz">
-  <div class="container" data-page-node-id="Rpj6HEYE2ozGSJi4Y9ckXD">
-    <div class="sec-head" data-page-node-id="evwlGeveHmmLEZdXY5J6iF">
-      <h2 data-page-node-id="njpevQxa9AQwgyA6PEZT7s">办理套餐</h2>
-      <p data-page-node-id="kdv3Lce33HBITruA2pfZTO">预存话费即可办理，通话资费低至 0.08 元/分钟</p>
+<section id="pricing">
+  <div class="container">
+    <div class="sec-head">
+      <h2>办理套餐</h2>
+      <p>预存话费即可办理，通话资费低至 0.08 元/分钟</p>
     </div>
-    <div class="grid-3" data-page-node-id="LEsiHvrvc6yrWHM7WURfQi">
-      <div class="card price-card" data-page-node-id="nmF3dvwGIWEqDVDdm0BPNr">
-        <h3 data-page-node-id="mkHKthLPvKYTDHHKZMp6UX">基础版</h3>
-        <p style="font-size:14px;color:#86909C" data-page-node-id="HYu5qOX3T6gn0Xb8cGYFH2">适合初创企业与个体户</p>
-        <div class="amt" data-page-node-id="jKYksz4v2sddxFLlfaMuYL">600<small data-page-node-id="CBGk8iWwLhHeQfSWwUUeHL"> 元预存</small></div>
-        <ul class="price-feats" data-page-node-id="ogFeuOtA4MGIo6VpYC12r3">
-          <li data-page-node-id="06y6yQKcMBFRdtFZjwaiMG">正规 400 号码 1 个</li>
-          <li data-page-node-id="JsxyBZFvYIr383tCIgh5MY">通话资费 0.12 元/分钟</li>
-          <li data-page-node-id="2mlMsZVLmJSc8C1l6HbaRI">最多绑定 5 个接听号码</li>
-          <li data-page-node-id="yyVD8kHNAdsEFwPily7VGL">基础语音导航</li>
-          <li data-page-node-id="MgJyKKirPokyfAk6gYavCp">对公合同 + 发票</li>
+    <div class="grid-3">
+      <div class="card price-card">
+        <h3>基础版</h3>
+        <p style="font-size:14px;color:#86909C">适合初创企业与个体户</p>
+        <div class="amt">600<small> 元预存</small></div>
+        <ul class="price-feats">
+          <li>正规 400 号码 1 个</li>
+          <li>通话资费 0.12 元/分钟</li>
+          <li>最多绑定 5 个接听号码</li>
+          <li>基础语音导航</li>
+          <li>对公合同 + 发票</li>
         </ul>
-        <a href="/contact/" class="btn btn-primary" style="width:100%" data-page-node-id="GzOOCZyJrET4InHl45Gd3A">立即办理</a>
+        <a href="{{ "contact/" | relURL }}" class="btn btn-primary" style="width:100%">立即办理</a>
       </div>
-      <div class="card price-card pop" data-page-node-id="CjrrIXBthRS5UQotxoXPqB">
-        <span class="flag" data-page-node-id="kQGQHYbkG4Vi7fSVZnQePK">最受欢迎</span>
-        <h3 data-page-node-id="PmIBXBKUD4laeOuf5Sf8b8">专业版</h3>
-        <p style="font-size:14px;color:#86909C" data-page-node-id="ifDUUoPDo51PmUnB9BT4xj">适合成长型企业</p>
-        <div class="amt" data-page-node-id="4QhI5ipic66w2dSjCZCdUN">1200<small data-page-node-id="Z06zFJQzAyBhAZnltECIjq"> 元预存</small></div>
-        <ul class="price-feats" data-page-node-id="YNAWu7EWQsZVNdaRxkOOoc">
-          <li data-page-node-id="QhLw8PE6Gq9bLA6pT08QVO">优质号码优先挑选</li>
-          <li data-page-node-id="CdfbUkn9q4fGZrRBhAEw6w">通话资费 0.10 元/分钟</li>
-          <li data-page-node-id="xMXJUW09GNTFjuUvLR46Rk">最多绑定 20 个接听号码</li>
-          <li data-page-node-id="IzElQW2snhHnjofhat0HJF">通话录音 + IVR 导航</li>
-          <li data-page-node-id="5hsAgMuMymKAyr8sUDIURW">来电统计报表</li>
-          <li data-page-node-id="aTV6LQGcSrL5vxIOmObG8x">对公合同 + 发票</li>
+      <div class="card price-card pop">
+        <span class="flag">最受欢迎</span>
+        <h3>专业版</h3>
+        <p style="font-size:14px;color:#86909C">适合成长型企业</p>
+        <div class="amt">1200<small> 元预存</small></div>
+        <ul class="price-feats">
+          <li>优质号码优先挑选</li>
+          <li>通话资费 0.10 元/分钟</li>
+          <li>最多绑定 20 个接听号码</li>
+          <li>通话录音 + IVR 导航</li>
+          <li>来电统计报表</li>
+          <li>对公合同 + 发票</li>
         </ul>
-        <a href="/contact/" class="btn btn-primary" style="width:100%" data-page-node-id="5e7RrUogvpSXXZveQ7A8wf">立即办理</a>
+        <a href="{{ "contact/" | relURL }}" class="btn btn-primary" style="width:100%">立即办理</a>
       </div>
-      <div class="card price-card" data-page-node-id="mSiU9uX4BEYQbpfQhYYm0H">
-        <h3 data-page-node-id="ei6l6H3HUccR43J84fCmIH">企业版</h3>
-        <p style="font-size:14px;color:#86909C" data-page-node-id="60RihyaLmYsD22wVHPtezH">适合品牌与连锁企业</p>
-        <div class="amt" data-page-node-id="igAk5vOCAkSUP1r3xcXpGF">2400<small data-page-node-id="Y4svCNap3VZneIVj3h1LBv"> 元预存</small></div>
-        <ul class="price-feats" data-page-node-id="dAHoKtzEsxtHXGirxjIWtP">
-          <li data-page-node-id="O9qgRuFfK3xdapabMtmvOG">靓号优先选择权</li>
-          <li data-page-node-id="Lxoivn5hWStd88s5yvDCsm">通话资费低至 0.08 元/分钟</li>
-          <li data-page-node-id="XiIsiCM1QF7YExfT62CgCF">接听号码数量不限</li>
-          <li data-page-node-id="04ItjG3zDwFuRTC0Xa11wW">全功能 + 专属客户经理</li>
-          <li data-page-node-id="IF5yMK8dys9EJFkRDf5AMM">CRM 系统对接支持</li>
-          <li data-page-node-id="6rXBdzh3wTHkRDzItJ3GR9">对公合同 + 发票</li>
+      <div class="card price-card">
+        <h3>企业版</h3>
+        <p style="font-size:14px;color:#86909C">适合品牌与连锁企业</p>
+        <div class="amt">2400<small> 元预存</small></div>
+        <ul class="price-feats">
+          <li>靓号优先选择权</li>
+          <li>通话资费低至 0.08 元/分钟</li>
+          <li>接听号码数量不限</li>
+          <li>全功能 + 专属客户经理</li>
+          <li>CRM 系统对接支持</li>
+          <li>对公合同 + 发票</li>
         </ul>
-        <a href="/contact/" class="btn btn-primary" style="width:100%" data-page-node-id="r8GvHfXZa6HIPp1A7MTCyL">立即办理</a>
+        <a href="{{ "contact/" | relURL }}" class="btn btn-primary" style="width:100%">立即办理</a>
       </div>
     </div>
   </div>
 </section>
 
 <!-- 靓号知识 -->
-<section class="sec-soft" data-page-node-id="AjWMcc5ClvaGl7IUTl08D8">
-  <div class="container" data-page-node-id="4f5R5LOiDAStwt5vIdNUhm">
-    <div class="sec-head" data-page-node-id="JxEe4jNfR30RyI7cR2t88v">
-      <h2 data-page-node-id="1cOzMZGvFq2LTdqp17GDGL">400 电话知识库</h2>
-      <p data-page-node-id="8l5j8pvMi8tc9Ku2EA4LkU">从选号、办理到运营，帮你把 400 电话用出价值</p>
+<section class="sec-soft">
+  <div class="container">
+    <div class="sec-head">
+      <h2>400 电话知识库</h2>
+      <p>从选号、办理到运营，帮你把 400 电话用出价值</p>
     </div>
-    <div class="grid-3" data-page-node-id="hRDjcaxwz5gECd9EI9yC9c">
+    <div class="grid-3">
       {{ range first 6 (where .Site.RegularPages "Section" "posts") }}
-      <a href="{{ .RelPermalink }}" class="card" style="display:block" data-page-node-id="iXMX4ZHgLJQbnQAFWjI93u">
-        <h3 style="font-size:16px;line-height:1.5" data-page-node-id="3oTjwbS2AhsO2SFap4Qzva">{{ .Title }}</h3>
-        <p style="margin-top:8px" data-page-node-id="uWHfwg34wlF3OqA0wTDojm">{{ .Description | truncate 60 }}</p>
+      <a href="{{ .RelPermalink }}" class="card" style="display:block">
+        <h3 style="font-size:16px;line-height:1.5">{{ .Title }}</h3>
+        <p style="margin-top:8px">{{ .Description | truncate 60 }}</p>
       </a>
       {{ end }}
     </div>
-    <div style="text-align:center;margin-top:32px" data-page-node-id="BUftAXqo10mENVEIiwPwIX">
-      <a href="/posts/" class="btn btn-primary" data-page-node-id="8gRSsFCR7nBTyHWPPL8T7B">浏览全部 {{ len (where .Site.RegularPages "Section" "posts") }} 篇指南 →</a>
+    <div style="text-align:center;margin-top:32px">
+      <a href="{{ "posts/" | relURL }}" class="btn btn-primary">浏览全部 {{ len (where .Site.RegularPages "Section" "posts") }} 篇指南 →</a>
     </div>
   </div>
 </section>
 
 <!-- 城市分站 -->
-<section data-page-node-id="3o9GFyxgBiuFWb62G5e5rE">
-  <div class="container" data-page-node-id="Me2DgAXNPNaQjunajE7Grz">
-    <div class="sec-head" data-page-node-id="7DS3rHVFZESbBVi9kLOnAa">
-      <h2 data-page-node-id="ODcy9IvWeSNchKwFd7HWAL">全国服务城市</h2>
-      <p data-page-node-id="3Q1LV60mA1W1WUx0AeYCXD">本地化办理服务，就近对接更快响应</p>
+<section>
+  <div class="container">
+    <div class="sec-head">
+      <h2>全国服务城市</h2>
+      <p>本地化办理服务，就近对接更快响应</p>
     </div>
-    <div class="city-list" style="justify-content:center" data-page-node-id="ua8GW6IUPArMLAIfTklDDf">
+    <div class="city-list" style="justify-content:center">
       {{ range $p.cities }}
-      <a href="/city/{{ .slug }}/" data-page-node-id="CEREQsO97DCkafSKY68oQm">{{ .name }}400电话</a>
+      <a href="{{ printf "city/%s/" .slug | relURL }}">{{ .name }}400电话</a>
       {{ end }}
     </div>
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-band" data-page-node-id="4h38uxv8kgVgcrJc8SYt6F">
-  <div class="container" data-page-node-id="BDXeOTM2M7gTHgGPg6fEdX">
-    <h2 data-page-node-id="AGsdECORIsTPb2F9QsRelZ">还在用普通手机号接客户电话？</h2>
-    <p data-page-node-id="LnFfkXO9l7AYKb369NXDgc">一天 100 通电话，客户记住的可能只有 0 个。换个好记的 400 靓号，让每一次投放都留下印记。</p>
-    <div class="hero-btns" data-page-node-id="YQvkz7BHKEnZHdLlIqeHBY">
-      <a href="/lianghao/" class="btn btn-white btn-lg" data-page-node-id="7dOFJV8n73au84ISISCD4r">立即挑选靓号</a>
-      <a href="tel:{{ $p.phoneRaw }}" class="btn btn-line btn-lg" data-page-node-id="oPaOVfz8482AFkLAyPAZEi">📞 {{ $p.phone }}</a>
+<section class="cta-band">
+  <div class="container">
+    <h2>还在用普通手机号接客户电话？</h2>
+    <p>一天 100 通电话，客户记住的可能只有 0 个。换个好记的 400 靓号，让每一次投放都留下印记。</p>
+    <div class="hero-btns">
+      <a href="{{ "lianghao/" | relURL }}" class="btn btn-white btn-lg">立即挑选靓号</a>
+      <a href="tel:{{ $p.phoneRaw }}" class="btn btn-line btn-lg">📞 {{ $p.phone }}</a>
     </div>
   </div>
 </section>

@@ -4,7 +4,7 @@
   <div class="container">
     <article class="article">
       <div class="breadcrumb">
-        <a href="/">首页</a> / <a href="/posts/">400知识库</a> / {{ .Title | truncate 22 }}
+        <a href="{{ "" | relURL }}">首页</a> / <a href="{{ "posts/" | relURL }}">400知识库</a> / {{ .Title | truncate 22 }}
       </div>
 
       <h1>{{ .Title }}</h1>
@@ -22,7 +22,7 @@
       <div class="cta-inline">
         <h4>想选一个好记的 400 靓号？</h4>
         <p>AAAA 四连、ABAB 对子、AABB 双顺，稀缺号码实时更新，人工一对一帮你挑</p>
-        <a href="/lianghao/" class="btn btn-primary">🎯 进入靓号库</a>
+        <a href="{{ "lianghao/" | relURL }}" class="btn btn-primary">🎯 进入靓号库</a>
         <a href="javascript:;" class="btn btn-green" onclick="showWx()">💬 微信咨询</a>
       </div>
 
