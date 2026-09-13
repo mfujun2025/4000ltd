@@ -164,7 +164,7 @@
 </section>
 
 <script>
-window.__NUMBERS__ = {{ .Site.Data.numbers | jsonify | safeJS }};
+window.__NUMBERS__ = {{ hugo.Data.numbers | jsonify | safeJS }};
 </script>
 <script src="{{ "js/lianghao.js" | relURL }}" defer></script>
 {{ end }}

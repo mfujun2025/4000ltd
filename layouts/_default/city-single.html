@@ -1,7 +1,7 @@
 {{ define "main" }}
 {{ $p := .Site.Params }}
 {{ $city := .Params.cityName | default "全国" }}
-{{ $nums := .Site.Data.numbers }}
+{{ $nums := hugo.Data.numbers }}
 
 <section class="hero" style="padding:56px 0 48px">
   <div class="container hero-inner">
@@ -45,10 +45,10 @@
       <div class="num-card">
         <div class="num">{{ replace .num "-" "<span class='sep'>-</span>" | safeHTML }}</div>
         <div class="meta">
-          <span class="tag tag-a">A级稀缺</span>
+          <span class="tag tag-a">{{ .levelCn | default "A级稀缺" }}</span>
           <span class="tag tag-d">{{ .cat }}</span>
         </div>
-        <div class="row"><span>市场参考价</span><span class="cost">¥{{ .price }}</span></div>
+        <div class="row"><span>套餐价格</span><span class="cost">{{ if .priceText }}¥{{ .priceText }}{{ else }}¥{{ lang.FormatNumber 0 .price }}{{ end }}</span></div>
         <button class="btn btn-primary" onclick="showWx()">咨询此号码</button>
       </div>
       {{ end }}

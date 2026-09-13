@@ -1,6 +1,6 @@
 {{ define "main" }}
 {{ $p := .Site.Params }}
-{{ $nums := .Site.Data.numbers }}
+{{ $nums := hugo.Data.numbers }}
 
 <section class="hero">
   <div class="container hero-inner">
@@ -51,16 +51,16 @@
       <div class="num-card">
         <div class="num">{{ replace .num "-" "<span class='sep'>-</span>" | safeHTML }}</div>
         <div class="meta">
-          <span class="tag tag-a">A级稀缺</span>
+          <span class="tag tag-a">{{ .levelCn | default "A级稀缺" }}</span>
           <span class="tag tag-d">{{ .cat }}</span>
         </div>
-        <div class="row"><span>市场参考价</span><span class="cost">¥{{ lang.FormatNumber 0 .price }}</span></div>
+        <div class="row"><span>套餐价格</span><span class="cost">{{ if .priceText }}¥{{ .priceText }}{{ else }}¥{{ lang.FormatNumber 0 .price }}{{ end }}</span></div>
         <button class="btn btn-primary" onclick="askNum('{{ .num }}')">咨询此号码</button>
       </div>
       {{ end }}
     </div>
     <div style="text-align:center;margin-top:32px">
-      <a href="{{ "lianghao/" | relURL }}" class="btn btn-primary btn-lg">查看全部 72 个靓号 →</a>
+      <a href="{{ "lianghao/" | relURL }}" class="btn btn-primary btn-lg">查看全部 {{ len $nums }} 个靓号 →</a>
     </div>
   </div>
 </section>
