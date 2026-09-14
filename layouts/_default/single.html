@@ -9,7 +9,7 @@
 
       <h1>{{ .Title }}</h1>
       <div class="article-meta">
-        {{ with .Params.categories }}<span class="cat">{{ index . 0 }}</span>{{ end }}
+        {{ with .Params.categories }}<span class="cat">{{ partial "catname.html" (index . 0) }}</span>{{ end }}
         <span>📅 {{ .Date.Format "2006年01月02日" }}</span>
         <span>⏱ 约 {{ .ReadingTime }} 分钟读完</span>
         <span>👁 {{ .Params.views | default 0 }} 次浏览</span>

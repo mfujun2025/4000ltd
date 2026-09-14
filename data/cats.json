@@ -1,0 +1,44 @@
+[
+ {
+  "slug": "jichu-kepu",
+  "name": "基础科普",
+  "desc": "400电话是什么、和800的区别、核心价值",
+  "descLong": "400电话是什么、和800有什么区别、企业为什么要用",
+  "ico": "📘"
+ },
+ {
+  "slug": "banli-shiwu",
+  "name": "办理实务",
+  "desc": "资料清单、办理流程、过户续费与避坑",
+  "descLong": "资料清单、办理流程、过户续费与常见避坑",
+  "ico": "📝"
+ },
+ {
+  "slug": "gongneng-xiangjie",
+  "name": "功能详解",
+  "desc": "通话录音、IVR导航、地域路由、黑名单",
+  "descLong": "通话录音、IVR导航、地域路由、黑名单等功能配置",
+  "ico": "⚙️"
+ },
+ {
+  "slug": "xuanhao-jiqiao",
+  "name": "选号技巧",
+  "desc": "号段选择、靓号规则、好号码怎么挑",
+  "descLong": "号段选择、靓号规则、好号码怎么挑",
+  "ico": "🎯"
+ },
+ {
+  "slug": "hangye-yingyong",
+  "name": "行业应用",
+  "desc": "电商、教培、医美、装修、餐饮等实操",
+  "descLong": "电商、教培、医美、装修、餐饮等行业实操",
+  "ico": "🏢"
+ },
+ {
+  "slug": "yunying-tisheng",
+  "name": "运营提升",
+  "desc": "用400电话提升转化率与客服水平",
+  "descLong": "用400电话提升转化率、客服水平与品牌信任",
+  "ico": "📈"
+ }
+]

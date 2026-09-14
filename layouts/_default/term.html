@@ -1,17 +1,15 @@
 {{ define "main" }}
-{{ $desc := dict
-  "基础科普" "400电话是什么、和800有什么区别、企业为什么要用"
-  "办理实务" "资料清单、办理流程、过户续费与常见避坑"
-  "功能详解" "通话录音、IVR导航、地域路由、黑名单等功能配置"
-  "选号技巧" "号段选择、靓号规则、好号码怎么挑"
-  "行业应用" "电商、教培、医美、装修、餐饮等行业实操"
-  "运营提升" "用400电话提升转化率、客服水平与品牌信任"
-}}
+{{- $term := .Data.Term -}}
+{{- $name := .Title -}}
+{{- $desc := "" -}}
+{{- range hugo.Data.cats -}}
+  {{- if eq .slug $term -}}{{- $name = .name -}}{{- $desc = .descLong -}}{{- end -}}
+{{- end -}}
 <section class="page-head">
   <div class="container">
-    <div class="breadcrumb"><a href="{{ "" | relURL }}">首页</a> / <a href="{{ "posts/" | relURL }}">知识库</a> / {{ .Title }}</div>
-    <h1>{{ .Title }}</h1>
-    <p class="page-sub">{{ index $desc .Title | default "400 电话相关知识指南" }} · 共 {{ len .Pages }} 篇</p>
+    <div class="breadcrumb"><a href="{{ "" | relURL }}">首页</a> / <a href="{{ "posts/" | relURL }}">知识库</a> / {{ $name }}</div>
+    <h1>{{ $name }}</h1>
+    <p class="page-sub">{{ $desc | default (or .Description "400 电话相关知识指南") }} · 共 {{ len .Pages }} 篇</p>
   </div>
 </section>
 
@@ -24,7 +22,7 @@
         <h3>{{ .Title }}</h3>
         {{ with .Description }}<p>{{ . | truncate 110 }}</p>{{ end }}
         <div class="post-meta">
-          {{ with .Params.categories }}<span class="cat">{{ index . 0 }}</span>{{ end }}
+          {{ with .Params.categories }}<span class="cat">{{ partial "catname.html" (index . 0) }}</span>{{ end }}
           <span>{{ .Date.Format "2006-01-02" }}</span>
           <span>约 {{ .ReadingTime }} 分钟</span>
         </div>
