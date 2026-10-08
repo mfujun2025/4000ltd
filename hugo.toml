@@ -2,7 +2,7 @@ baseURL = "https://xn--400-nt1hja4195aifa.xn--fiqs8s/"
 relativeURLs = false
 canonifyURLs = false
 locale = "zh-CN"
-title = "400电话靓号网 | 全国400靓号在线办理中心"
+title = "400电话申请 | 全国400电话办理中心 | 400电话申请.中国"
 enableRobotsTXT = true
 enableEmoji = true
 hasCJKLanguage = true
@@ -14,14 +14,14 @@ paginatePath = "page"
 
 # 站点参数
 [params]
-  siteName = "400靓号网"
+  siteName = "400电话申请.中国"
   slogan = "好记的号码，就是最好的广告"
   description = "全国400电话靓号在线办理中心，精选AAAA、ABCD、ABAB等规律靓号，三大运营商正规号码，当天开通，通话录音、语音导航全功能免费。"
   keywords = "400电话靓号,400靓号,400电话号码,400电话办理,靓号申请,400靓号大全"
   phone = "137-6442-7878"
   phoneRaw = "13764427878"
   wechat = "m19752023"
-  copyright = "400靓号网"
+  copyright = "400电话申请.中国"
   # 城市分站：按省级行政区分组，共 349 个地级行政区
   provinces = [
     { name = "北京", slug = "beijing", cities = [
