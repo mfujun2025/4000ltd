@@ -7,6 +7,9 @@ enableRobotsTXT = true
 enableEmoji = true
 hasCJKLanguage = true
 summaryLength = 80
+# 文章 date 统一写成当天 T09:00:00+08:00；若构建发生在 09:00 之前（定时任务早于 9 点跑），
+# Hugo 默认会当作未来日期跳过，导致新文章不进 public/。此处放开未来时间内容。
+buildFuture = true
 
 # 分页
 paginate = 12
