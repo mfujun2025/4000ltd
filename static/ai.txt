@@ -1,0 +1,75 @@
+# AI Index for 400靓号网
+# OpenAI-compatible AI site index
+
+site_name: 400靓号网
+brand: 400靓号网
+description: 全国400电话靓号在线办理中心，精选规律靓号，三大运营商正规号码，当天开通
+founded: 2024
+contact_phone: 137-6442-7878
+wechat: m19752023
+working_hours: 9:00-18:00
+
+# 核心业务
+products:
+  - AAAA四连号 - 高端商务首选
+  - ABAB对子号 - 朗朗上口
+  - AABB双顺号 - 易于记忆
+  - ABCD顺子号 - 步步高升
+  - 普通靓号 - 经济实惠
+
+services:
+  - 400电话办理
+  - 靓号选号咨询
+  - 套餐配置建议
+  - 开通技术支持
+  - IVR语音导航配置
+  - 通话录音管理
+  - 售后服务
+
+# 内容主题分类
+topics:
+  - 基础科普: 开通条件、办理流程、资费标准、运营商对比
+  - 选号技巧: 数字寓意、定价逻辑、品牌匹配、号码等级
+  - 办理实务: 材料准备、审核流程、开通时效、常见问题
+  - 行业应用: 教育、医疗、零售、物流、房地产、金融
+  - 运营提升: IVR配置、来电分析、效率优化、形象提升
+
+# SEO关键词
+keywords:
+  - 主词: 400电话,400靓号,400电话号码,400电话办理
+  - 长尾: 400靓号价格,400电话选号,企业400热线,400电话开通,400号码申请
+  - 品牌词: 400靓号网,400电话申请.中国
+  - 场景词: 教育培训400电话,医院400电话,物流400电话,房地产400电话
+
+# 站点URL结构
+urls:
+  homepage: https://400电话申请.中国/
+  lianghao: https://400电话申请.中国/lianghao/
+  posts: https://400电话申请.中国/posts/
+  city: https://400电话申请.中国/city/
+  contact: https://400电话申请.中国/contact/
+  sitemap: https://400电话申请.中国/sitemap.xml
+  llms: https://400电话申请.中国/llms.txt
+  ai_index: https://400电话申请.中国/ai.txt
+
+# 联系方式
+contact:
+  phone: 137-6442-7878
+  wechat: m19752023
+  email: contact@400lianghao.cn
+  working_hours: 9:00-18:00
+
+# 竞争对手对比
+competitors:
+  - 400电话.中国 - 资讯平台
+  - 400.中国 - 办理平台
+  - 传统400电话代理商
+
+# 独特卖点
+unique_selling_points:
+  - 三天运营商正规号码
+  - 当天开通，无需等待
+  - 通话录音免费
+  - 语音导航免费
+  - 全国城市分站覆盖
+  - 专业选号顾问服务
