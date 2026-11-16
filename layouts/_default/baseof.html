@@ -14,37 +14,6 @@
   <meta property="og:title" content="{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }}{{ end }}">
   <meta property="og:description" content="{{ $desc }}">
   <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}">
-  {{ if .IsHome }}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "@id": "https://400%E7%94%B5%E8%AF%9D%E7%94%B3%E8%AF%B7.%E4%B8%AD%E5%9B%BD/#organization",
-    "name": "400靓号网",
-    "url": "https://400%E7%94%B5%E8%AF%9D%E7%94%B3%E8%AF%B7.%E4%B8%AD%E5%9B%BD",
-    "description": "全国400电话靓号在线办理中心，精选AAAA、ABCD、ABAB等规律靓号，三大运营商正规号码，当天开通",
-    "foundingDate": "2024",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+86-137-6442-7878",
-      "contactType": "customer service",
-      "availableLanguage": ["Chinese"],
-      "email": "contact@400lianghao.cn"
-    },
-    "knowsAbout": ["400电话", "400靓号", "企业服务热线", "电话号码办理"],
-    "hasOfferCatalog": {
-      "@type": "OfferCatalog",
-      "name": "400靓号产品系列",
-      "itemListElement": [
-        {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "AAAA四连号", "description": "高端商务首选，寓意步步高升"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "ABAB对子号", "description": "朗朗上口，易于记忆"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "AABB双顺号", "description": "节奏感强，商务形象好"}},
-        {"@type": "Offer", "itemOffered": {"@type": "Product", "name": "ABCD顺子号", "description": "连续递增，unique高"}}
-      ]
-    }
-  }
-  </script>
-  {{ end }}
 </head>
 <body>
 {{ partial "header.html" . }}
